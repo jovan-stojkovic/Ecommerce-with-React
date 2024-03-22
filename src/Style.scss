@@ -9,20 +9,17 @@
       "YOPQ" 300;
   }
 
-  
-// ### Primary
 
-// - Orange: hsl(26, 100%, 55%)
-// - Pale orange: hsl(25, 100%, 94%)
+$Orange: hsl(26, 100%, 55%);
+$Pale-orange: hsl(25, 100%, 94%);
 
-// ### Neutral
-
-// - Very dark blue: hsl(220, 13%, 13%)
-// - Dark grayish blue: hsl(219, 9%, 45%)
-// - Grayish blue: hsl(220, 14%, 75%)
-// - Light grayish blue: hsl(223, 64%, 98%)
-// - White: hsl(0, 0%, 100%)
-// - Black (with 75% opacity for lightbox background): hsl(0, 0%, 0%)
+$Very-dark-blue: hsl(220, 13%, 13%);
+$Dark-grayish-blue: hsl(219, 9%, 45%);
+$Grayish-blue: hsl(220, 14%, 75%);
+$Light-grayish-blue: hsl(223, 64%, 98%);
+$White: hsl(0, 0%, 100%);
+$Black : hsl(0, 0%, 0%);
+$Black-lightbox: hsla(0, 0%, 0%, 0.75);
 
 //- Font size (paragraph): 16px
 
@@ -31,3 +28,96 @@
     margin: 0;
     padding: 0;
 }
+
+main {
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 400;
+  width: 100vw;
+  height: 100vh;
+
+  .container {
+    width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+  }
+}
+
+.navbar {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid $Light-grayish-blue;
+
+  .navbar-left-side {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    height: 100%;
+
+    .navs {
+      display: flex;
+      gap: 30px;
+      height: 100%;
+
+      p {
+        color: $Dark-grayish-blue;
+        font-size: 18px;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 6px solid white;
+        transition: 0.2s ease;
+
+        &:hover {
+          border-bottom: 6px solid $Orange;
+          cursor: pointer;
+          color: $Black;
+          transition: 0.2s ease;
+        }
+      }
+
+ 
+    }
+  }
+
+  .navbar-right-side {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    .cart {
+      all: unset;
+      height: 30px;
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url("./src/assets/images/icon-cart.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .user {
+      height: 55px;
+      width: 55px;
+      background-image: url("./src/assets/images/image-avatar.png");
+      background-position: center;
+      background-size: contain;
+      border-radius: 100px;
+      border: 3px solid white;
+
+      &:hover {
+        cursor: pointer;
+        border: 3px solid $Orange;
+      }
+    }
+  }
+}
+
