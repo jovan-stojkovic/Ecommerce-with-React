@@ -7,6 +7,9 @@ const App = () => {
   const img3 = "src/assets/images/image-product-3.jpg";
   const img4 = "src/assets/images/image-product-4.jpg";
 
+  const title = "Fall Limited Edition Sneakers";
+  const price = 125;
+
   const [hiddenCartContainer, setHiddenCartContainer] = useState("");
   const [hiddenCartCount, setHiddenCartCount] = useState("");
   const [largeIMG, setLargeIMG] = useState(img1);
@@ -57,9 +60,32 @@ const App = () => {
               <div className="top">
                 <h4 className="cart-headline">Cart</h4>
               </div>
-              <div className="bottom">
-                <p className="empty">Your cart is empty.</p>
-              </div>
+
+              {inCart === 0 ? (
+                <div className="bottom-empty">
+                  <p className="empty">Your cart is empty.</p>
+                </div>
+              ) : (
+                <div className="bottom-full">
+                  <div className="cart-info">
+                    <div className="thumbnail"></div>
+                    <div className="info">
+                      <p className="title">{title}</p>
+                      <div className="cart-price">
+                        <p className="gray">
+                          {`$${price}.00`} x {inCart}
+                        </p>
+                        <p className="bold">{`$${price * inCart}.00`}</p>
+                      </div>
+                    </div>
+                    <button className="delete" onClick={() => {
+                      setInCart(0)
+                      setCount(0)
+                      }}></button>
+                  </div>
+                  <button className="checkout">Checkout</button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -104,14 +130,14 @@ const App = () => {
 
           <div className="main-right-side">
             <h3>SNEAKER COMPANY</h3>
-            <h1>Fall Limited Edition Sneakers</h1>
+            <h1>{title}</h1>
             <p>
               These low-profile sneakers are your perfect casual wear companion.
               Featuring a durable rubber outer sole, they'll withstand
               everything the weather can offer.
             </p>
             <div className="price">
-              <h2>$125.00</h2>
+              <h2>{price}</h2>
               <div className="discount">50%</div>
             </div>
             <h4>$250.00</h4>

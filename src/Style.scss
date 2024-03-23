@@ -133,10 +133,10 @@ main {
 
       .top {
         border-bottom: 1px solid $Grayish-blue;
-        padding: 30px;
+        padding: 30px 20px;
       }
 
-      .bottom {
+      .bottom-empty {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -145,6 +145,86 @@ main {
         .empty {
           font-weight: 700;
           color: $Dark-grayish-blue;
+        }
+      }
+
+      .bottom-full {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+        height: 230px;
+        gap: 30px;
+
+        .cart-info {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+          height: 70px;
+          width: 100%;
+
+          .thumbnail {
+            height: 60px;
+            width: 60px;
+            border-radius: 10px;
+            background-image: url("src/assets/images/image-product-1-thumbnail.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+
+          .info {
+            .title {
+              color: $Dark-grayish-blue;
+              margin-bottom: 10px;
+            }
+            .cart-price {
+              display: flex;
+              gap: 4px;
+            }
+
+            .gray {
+              color: $Dark-grayish-blue;
+            }
+
+            .bold {
+              font-weight: 700;
+            }
+          }
+
+          .delete {
+            all: unset;
+            height: 30px;
+            width: 15px;
+            background-image: url("src/assets/images/icon-delete.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+
+        .checkout {
+          all: unset;
+          background-color: $Orange;
+          color: white;
+          font-weight: 700;
+          font-size: 18px;
+          width: 100%;
+          height: 70px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            cursor: pointer;
+            background-color: rgb(251, 155, 82);;
+          }
         }
       }
     }
