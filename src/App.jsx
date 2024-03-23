@@ -7,6 +7,8 @@ const App = () => {
   const img3 = "src/assets/images/image-product-3.jpg";
   const img4 = "src/assets/images/image-product-4.jpg";
 
+  const radioArray = [img1, img2, img3, img4]
+
   const title = "Fall Limited Edition Sneakers";
   const price = 125;
 
@@ -90,41 +92,23 @@ const App = () => {
           </div>
         </div>
 
-        <div className="main-container">
+        <div className="main-container" onClick={() => setHiddenCartContainer("")}>
           <div className="main-left-side">
             <div className="large-img-container">
               <img src={largeIMG} alt="img" />
             </div>
             <div className="radios">
-              <input
+              {radioArray.map((img, index) => (
+                <input
+                key={index}
                 type="radio"
-                id="radio1"
-                value={img1}
+                id={`radio${index+1}`}
+                value={img}
                 name="radios"
                 onChange={handleChange}
-                defaultChecked
-              />
-              <input
-                type="radio"
-                id="radio2"
-                value={img2}
-                name="radios"
-                onChange={handleChange}
-              />
-              <input
-                type="radio"
-                id="radio3"
-                value={img3}
-                name="radios"
-                onChange={handleChange}
-              />
-              <input
-                type="radio"
-                id="radio4"
-                value={img4}
-                name="radios"
-                onChange={handleChange}
-              />
+                defaultChecked={index===0}
+                />
+              ))}
             </div>
           </div>
 
