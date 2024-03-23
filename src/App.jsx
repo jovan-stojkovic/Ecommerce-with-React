@@ -137,7 +137,7 @@ const App = () => {
               everything the weather can offer.
             </p>
             <div className="price">
-              <h2>{price}</h2>
+              <h2>${price}.00</h2>
               <div className="discount">50%</div>
             </div>
             <h4>$250.00</h4>
