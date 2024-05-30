@@ -10,7 +10,6 @@
 
 $Orange: hsl(26, 100%, 55%);
 $Pale-orange: hsl(25, 100%, 94%);
-
 $Very-dark-blue: hsl(220, 13%, 13%);
 $Dark-grayish-blue: hsl(219, 9%, 45%);
 $Grayish-blue: hsl(220, 14%, 75%);
@@ -18,8 +17,6 @@ $Light-grayish-blue: hsl(223, 64%, 98%);
 $White: hsl(0, 0%, 100%);
 $Black: hsl(0, 0%, 0%);
 $Black-lightbox: hsla(0, 0%, 0%, 0.75);
-
-//- Font size (paragraph): 16px
 
 * {
   box-sizing: border-box;
@@ -30,8 +27,6 @@ $Black-lightbox: hsla(0, 0%, 0%, 0.75);
 main {
   font-family: "Kumbh Sans", sans-serif;
   font-weight: 400;
-  width: 100vw;
-  height: 100vh;
 
   .container {
     width: 1200px;
@@ -48,6 +43,10 @@ main {
   border-bottom: 1px solid $Grayish-blue;
 
   .navbar-left-side {
+    button {
+      display: none;
+    }
+
     display: flex;
     align-items: center;
     gap: 50px;
@@ -92,7 +91,7 @@ main {
       display: flex;
       justify-content: center;
       align-items: center;
-      background-image: url("./src/assets/images/icon-cart.svg");
+      background-image: url("/icon-cart.svg");
       background-repeat: no-repeat;
       background-position: center;
 
@@ -105,7 +104,7 @@ main {
     .user {
       height: 50px;
       width: 50px;
-      background-image: url("./src/assets/images/image-avatar.png");
+      background-image: url("/image-avatar.png");
       background-position: center;
       background-size: contain;
       border-radius: 100px;
@@ -169,7 +168,7 @@ main {
             height: 60px;
             width: 60px;
             border-radius: 10px;
-            background-image: url("src/assets/images/image-product-1-thumbnail.jpg");
+            background-image: url("/image-product-1-thumbnail.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
@@ -198,7 +197,7 @@ main {
             all: unset;
             height: 30px;
             width: 15px;
-            background-image: url("src/assets/images/icon-delete.svg");
+            background-image: url("/icon-delete.svg");
             background-repeat: no-repeat;
             background-position: center;
 
@@ -223,7 +222,7 @@ main {
 
           &:hover {
             cursor: pointer;
-            background-color: rgb(251, 155, 82);;
+            background-color: rgb(251, 155, 82);
           }
         }
       }
@@ -315,16 +314,16 @@ main {
     }
 
     #radio1 {
-      background-image: url("src/assets/images/image-product-1-thumbnail.jpg");
+      background-image: url("/image-product-1-thumbnail.jpg");
     }
     #radio2 {
-      background-image: url("src/assets/images/image-product-2-thumbnail.jpg");
+      background-image: url("/image-product-2-thumbnail.jpg");
     }
     #radio3 {
-      background-image: url("src/assets/images/image-product-3-thumbnail.jpg");
+      background-image: url("/image-product-3-thumbnail.jpg");
     }
     #radio4 {
-      background-image: url("src/assets/images/image-product-4-thumbnail.jpg");
+      background-image: url("/image-product-4-thumbnail.jpg");
     }
   }
 
@@ -411,11 +410,11 @@ main {
         }
 
         .minus {
-          background-image: url("src/assets/images/icon-minus.svg");
+          background-image: url("/icon-minus.svg");
         }
 
         .plus {
-          background-image: url("src/assets/images/icon-plus.svg");
+          background-image: url("/icon-plus.svg");
         }
 
         h5 {
@@ -440,7 +439,7 @@ main {
         span {
           width: 20px;
           height: 20px;
-          background-image: url("src/assets/images/icon-cart.svg");
+          background-image: url("/icon-cart.svg");
           background-position: center;
           background-size: cover;
           background-repeat: no-repeat;
@@ -449,7 +448,146 @@ main {
 
         &:hover {
           cursor: pointer;
-          background-color: rgb(251, 155, 82);;
+          background-color: rgb(251, 155, 82);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    .container {
+      width: 95vw;
+      padding: 10px;
+    }
+  }
+
+  .navbar {
+    height: 60px;
+
+    .navbar-left-side {
+      gap: 30px;
+      position: relative;
+
+      button {
+        all: unset;
+        display: block;
+        cursor: pointer;
+      }
+
+      .navs {
+        position: absolute;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
+        top: 0;
+        left: -1000px;
+        margin-top: 10vh;
+        height: 90vh;
+        background-image: linear-gradient(
+          to right,
+          white,
+          rgba(255, 255, 255, 0.2)
+        );
+        backdrop-filter: blur(5px);
+        opacity: 0.5;
+        transition: all 0.5s;
+
+        p {
+          margin-left: 20px;
+          height: 30px;
+          border-bottom: none;
+
+          &:hover {
+            border-bottom: none;
+          }
+        }
+
+        &.show {
+          left: -10px;
+          opacity: 1;
+          transition: all 0.5s;
+        }
+      }
+    }
+
+    .navbar-right-side {
+      margin-right: 10px;
+
+      .user {
+        height: 40px;
+        width: 40px;
+      }
+
+      .hidden-cart-container {
+        top: 10px;
+        right: 0px;
+        width: 300px;
+
+        .top {
+          border-bottom: 1px solid $Grayish-blue;
+          padding: 10px 20px;
+        }
+
+        .bottom-full {
+          .cart-info {
+            .thumbnail {
+              height: 50px;
+              width: 50px;
+            }
+            .info {
+              .title {
+                font-size: 12px;
+              }
+              .cart-price {
+                font-size: 14px;
+              }
+            }
+          }
+
+          .checkout {
+            font-size: 15px;
+            height: 50px;
+          }
+        }
+      }
+
+      .hidden-cart-container.show {
+        top: 54px;
+      }
+    }
+  }
+
+  .main-container {
+    flex-direction: column;
+    gap: 50px;
+
+    .main-right-side {
+      h3 {
+        font-size: 15px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .price {
+        h2 {
+          font-size: 30px;
+        }
+      }
+
+      .buttons {
+        .count {
+          height: 50px;
+        }
+
+        .add-to-cart {
+          height: 50px;
+          width: 200px;
         }
       }
     }

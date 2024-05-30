@@ -2,12 +2,12 @@ import "./Style.scss";
 import { useState, useEffect } from "react";
 
 const App = () => {
-  const img1 = "src/assets/images/image-product-1.jpg";
-  const img2 = "src/assets/images/image-product-2.jpg";
-  const img3 = "src/assets/images/image-product-3.jpg";
-  const img4 = "src/assets/images/image-product-4.jpg";
+  const img1 = "/image-product-1.jpg";
+  const img2 = "/image-product-2.jpg";
+  const img3 = "/image-product-3.jpg";
+  const img4 = "/image-product-4.jpg";
 
-  const radioArray = [img1, img2, img3, img4]
+  const radioArray = [img1, img2, img3, img4];
 
   const title = "Fall Limited Edition Sneakers";
   const price = 125;
@@ -17,6 +17,7 @@ const App = () => {
   const [largeIMG, setLargeIMG] = useState(img1);
   const [count, setCount] = useState(0);
   const [inCart, setInCart] = useState(0);
+  const [sideMenu, setSideMenu] = useState("hide");
 
   const handleCartClick = () => {
     setHiddenCartContainer(hiddenCartContainer === "" ? "show" : "");
@@ -42,10 +43,22 @@ const App = () => {
       <div className="container">
         <div className="navbar">
           <div className="navbar-left-side">
+            <button
+              onClick={() => {
+                setSideMenu(sideMenu === "hide" ? "show" : "hide");
+              }}
+            >
+              <img src="/icon-menu.svg" alt="menu" />
+            </button>
             <a href="/">
-              <img src="./src/assets/images/logo.svg" alt="logo" />
+              <img src="/logo.svg" alt="logo" />
             </a>
-            <div className="navs">
+            <div
+              className={`navs ${sideMenu}`}
+              onClick={() => {
+                setSideMenu(sideMenu === "hide" ? "show" : "hide");
+              }}
+            >
               <p className="nav">Collections</p>
               <p className="nav">Men</p>
               <p className="nav">Women</p>
@@ -80,10 +93,13 @@ const App = () => {
                         <p className="bold">{`$${price * inCart}.00`}</p>
                       </div>
                     </div>
-                    <button className="delete" onClick={() => {
-                      setInCart(0)
-                      setCount(0)
-                      }}></button>
+                    <button
+                      className="delete"
+                      onClick={() => {
+                        setInCart(0);
+                        setCount(0);
+                      }}
+                    ></button>
                   </div>
                   <button className="checkout">Checkout</button>
                 </div>
@@ -92,7 +108,10 @@ const App = () => {
           </div>
         </div>
 
-        <div className="main-container" onClick={() => setHiddenCartContainer("")}>
+        <div
+          className="main-container"
+          onClick={() => setHiddenCartContainer("")}
+        >
           <div className="main-left-side">
             <div className="large-img-container">
               <img src={largeIMG} alt="img" />
@@ -100,13 +119,13 @@ const App = () => {
             <div className="radios">
               {radioArray.map((img, index) => (
                 <input
-                key={index}
-                type="radio"
-                id={`radio${index+1}`}
-                value={img}
-                name="radios"
-                onChange={handleChange}
-                defaultChecked={index===0}
+                  key={index}
+                  type="radio"
+                  id={`radio${index + 1}`}
+                  value={img}
+                  name="radios"
+                  onChange={handleChange}
+                  defaultChecked={index === 0}
                 />
               ))}
             </div>
